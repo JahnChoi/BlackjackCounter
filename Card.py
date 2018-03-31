@@ -3,8 +3,6 @@
 #  0 --> 7, 8, 9
 # +1 --> 2, 3, 4, 5, 6
 
-# DONE (7/30/17)
-
 class Card:
     def __init__(self, value):
         self._value = value
@@ -12,7 +10,7 @@ class Card:
             self._count = -1
         elif self._value in ['7', '8', '9']:
             self._count = 0
-        else:
+        elif self._value in ['2', '3', '4', '5', '6']:
             self._count = 1
             
     def get_value(self):
