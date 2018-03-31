@@ -12,6 +12,8 @@ class Card:
             self._count = 0
         elif self._value in ['2', '3', '4', '5', '6']:
             self._count = 1
+        else:
+            self._count = 0
             
     def get_value(self):
         return self._value
