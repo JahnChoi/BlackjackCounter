@@ -15,9 +15,10 @@ while (loop == 1):
     card = Card.Card(card_input)
 
     r_count = Algorithm.get_r_count(card, r_count)
-    print(r_count)
+    print("Running Count is: ", r_count)
 
-    Algorithm.get_adv_percentage(r_count)
+    adv_percentage = Algorithm.get_adv_percentage(r_count)
+    #print("Advantage Percentage is: ", adv_percentage)
 
     exit_input = input("Exit? (y/n): ")
     if (exit_input == 'y'):
