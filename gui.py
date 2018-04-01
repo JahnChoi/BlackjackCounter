@@ -75,6 +75,7 @@ class Ui_Dialog(object):
         self.pushButton.setText(_translate("Dialog", "Refresh", None))
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.label.setText(_translate("Dialog", "-3%", None))
+        self.label.setStyleSheet('color: red')
         self.label_2.setText(_translate("Dialog", "Disadvantage: House always has edge in start", None))
         self.label_3.setText(_translate("Dialog", "Count", None))
 
@@ -97,10 +98,13 @@ class Ui_Dialog(object):
     def text_update(self, Dialog, adv_percentage):
         if (adv_percentage == 0):   
             self.label_2.setText(_translate("Dialog", "No Advantage: Even Game", None))
+            self.label.setStyleSheet('color: black')
         elif (adv_percentage > 0):
             self.label_2.setText(_translate("Dialog", "Advantage   : Player's Edge", None))
+            self.label.setStyleSheet('color: green')
         elif (adv_percentage < 0):
             self.label_2.setText(_translate("Dialog", "Disadvantage: House's  Edge", None))
+            self.label.setStyleSheet('color: reds')
         else:
             self.label_2.setText(_translate("Dialog", "Invalid Percentage", None))
         
@@ -124,6 +128,7 @@ if __name__ == "__main__":
         
         #getCard
         card_input = card_img.get_final_value(stream_url)
+        card_input = int (card_input)
         
         #Algorithms - get running count and advantage percentage
         card = Card.Card(card_input)
