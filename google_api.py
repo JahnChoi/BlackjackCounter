@@ -7,13 +7,20 @@ import os
 from google.cloud import vision
 from google.cloud.vision import types
 
+import card_img
+
 def get_labels(content):
     vision_client = vision.ImageAnnotatorClient()
 
     image = types.Image(content=content)
     response = vision_client.label_detection(image=image)
 
-    return response.label_annotations
+    labels = response.label_annotations
+
+    for label in labels:
+        print(label.mid, end=' ')
+        print(label.description, end=' ')
+        print(label.score)
 
 
 def detect_logos(content):
@@ -25,7 +32,8 @@ def detect_logos(content):
     response = client.logo_detection(image=image)
     logos = response.logo_annotations
 
-    return logos
+    for logo in logos:
+        print(logo.description)
 
 
 def detect_text(content):
@@ -130,33 +138,52 @@ def detect_web(content):
             
 
 if __name__ == '__main__':
-    url = 'http://10.30.5.61:8080/shot.jpg?rnd=275367'
+    print("Input video stream URL: ", end='')
+    url = input()
     
     imgResp=urllib.request.urlopen(url)
     imgNp=np.array(bytearray(imgResp.read()),dtype=np.uint8)
     img=cv2.imdecode(imgNp,-1)
 
-    cv2.imwrite('camera.png', img)
+    cv2.imwrite('camera.jpg', img)
 
-    with io.open('camera.png', 'rb') as image_file:
-        content = image_file.read()
+##    with io.open('camera.png', 'rb') as image_file:
+##        content = image_file.read()
 
-    detect_web(content)
+    filename = 'camera.jpg'
+    print("Number of cards to analyze: ", end='')
+    num_cards = int(input())
+    training_image_filename = 'train.png'
+    training_labels_filename = 'train.tsv'
+    num_training_cards = 56
 
-    #detect_document(content)
+    training = card_img.get_training(training_labels_filename,training_image_filename,num_training_cards)
 
-    #detect_properties(content)
+    im = cv2.imread(filename)
+    
+    width = im.shape[0]
+    height = im.shape[1]
+    if width < height:
+        im = cv2.transpose(im)
+        im = cv2.flip(im,1)
 
-    #detect_text(content)
+    # Debug: uncomment to see registered images
+    for i,c in enumerate(card_img.getCards(im,num_cards)):
+        card = card_img.find_closest_card(training,c,)
+        cv2.imshow(str(card),c)
+    cv2.waitKey(0) 
+    
+    cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
+    print(cards)
 
-    #logos = detect_logos(content)
+##    detect_web(content)
 
-    #for logo in logos:
-    #    print(logo.description)
+##    detect_document(content)
 
-    #labels = get_labels(content)
+##    detect_properties(content)
 
-    #for label in labels:
-    #    print(label.mid, end=' ')
-    #    print(label.description, end=' ')
-    #    print(label.score)
+##    detect_text(content)
+
+##    detect_logos(content)
+
+##    get_labels(content)
