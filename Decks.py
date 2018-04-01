@@ -1,9 +1,5 @@
 # Typically 1-8 decks of 52 cards in main deck
 
-# UPDATED (7/30/17)
-# UPDATED (8/14/17)
-# UPDATED (9/13/17)
-
 import Card
 
 class Decks:

@@ -22,6 +22,8 @@ def get_adv_percentage(r_count):
     
     if (r_count == 1):
         print("0 % Advantage: Even Game")
+        adv_percentage = 0
+        return adv_percentage
         
     elif (r_count > 1):
         pos_counter = r_count - 1
@@ -31,18 +33,27 @@ def get_adv_percentage(r_count):
         
         if (percentage > 100):
             print("ESTIMATED 99.9% Advantage: Player's Edge")
+            adv_percentage = 99.9
+            return adv_percentage
         else:
             print("ESTIMATED", percentage, "% Advantage: Player's Edge")
+            adv_percentage = percentage
+            return adv_percentage
 
     elif (r_count < 1):
         neg_counter = r_count - 1
-        percentage = neg_counter / -2
+        percentage = neg_counter / 2
         percentage = percentage * 6
 
-        if (percentage > 100):
-            print("ESTIMATED 99.9% Disadvantage: House's Edge")
+        if (percentage < -100):
+            print("ESTIMATED -99.9% Disadvantage: House's Edge")
+            adv_percentage = -99.9
+            return adv_percentage
+            
         else:
             print("ESTIMATED", percentage, "% Disadvantage: House's Edge")
+            adv_percentage = percentage
+            return adv_percentage
 
     else:
         print ("INVALID RUNNING COUNT")
