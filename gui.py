@@ -133,7 +133,12 @@ if __name__ == "__main__":
         #Algorithms - get running count and advantage percentage
         card = Card.Card(card_input)
         r_count = Algorithm.get_r_count(card, r_count)
+
+        print(r_count)
+        
         adv_percentage = Algorithm.get_adv_percentage(r_count)
+
+        print(adv_percentage)
         
         #Update GUI based on refresh button
         ui.count_update(Dialog, r_count, counter)
