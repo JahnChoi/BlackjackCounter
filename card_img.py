@@ -112,32 +112,32 @@ def get_training(training_labels_filename,training_image_filename,num_training_c
   return training
   
 
-if __name__ == '__main__':
-  if len(sys.argv) == 6:
-    filename = sys.argv[1]
-    num_cards = int(sys.argv[2])
-    training_image_filename = sys.argv[3]
-    training_labels_filename = sys.argv[4]    
-    num_training_cards = int(sys.argv[5])
-    
-    training = get_training(training_labels_filename,training_image_filename,num_training_cards)
-
-    im = cv2.imread(filename)
-    
-    width = im.shape[0]
-    height = im.shape[1]
-    if width < height:
-      im = cv2.transpose(im)
-      im = cv2.flip(im,1)
-
-    # Debug: uncomment to see registered images
-    # for i,c in enumerate(getCards(im,num_cards)):
-    #   card = find_closest_card(training,c,)
-    #   cv2.imshow(str(card),c)
-    # cv2.waitKey(0) 
-    
-    cards = [find_closest_card(training,c) for c in getCards(im,num_cards)]
-    print (cards)
-    
-  else:
-    print (__doc__)
+##if __name__ == '__main__':
+##  if len(sys.argv) == 6:
+##    filename = sys.argv[1]
+##    num_cards = int(sys.argv[2])
+##    training_image_filename = sys.argv[3]
+##    training_labels_filename = sys.argv[4]    
+##    num_training_cards = int(sys.argv[5])
+##    
+##    training = get_training(training_labels_filename,training_image_filename,num_training_cards)
+##
+##    im = cv2.imread(filename)
+##    
+##    width = im.shape[0]
+##    height = im.shape[1]
+##    if width < height:
+##      im = cv2.transpose(im)
+##      im = cv2.flip(im,1)
+##
+##    # Debug: uncomment to see registered images
+##    # for i,c in enumerate(getCards(im,num_cards)):
+##    #   card = find_closest_card(training,c,)
+##    #   cv2.imshow(str(card),c)
+##    # cv2.waitKey(0) 
+##    
+##    cards = [find_closest_card(training,c) for c in getCards(im,num_cards)]
+##    print (cards)
+##    
+##  else:
+##    print (__doc__)

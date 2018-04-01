@@ -150,31 +150,34 @@ if __name__ == '__main__':
 ##    with io.open('camera.png', 'rb') as image_file:
 ##        content = image_file.read()
 
-    filename = 'camera.jpg'
     print("Number of cards to analyze: ", end='')
     num_cards = int(input())
+    filename = 'camera.jpg'
     training_image_filename = 'train.png'
     training_labels_filename = 'train.tsv'
     num_training_cards = 56
 
-    training = card_img.get_training(training_labels_filename,training_image_filename,num_training_cards)
+    training = card_img.get_training(training_labels_filename,training_image_filename,
+                                     num_training_cards)
 
     im = cv2.imread(filename)
     
-    width = im.shape[0]
-    height = im.shape[1]
-    if width < height:
-        im = cv2.transpose(im)
-        im = cv2.flip(im,1)
+##    width = im.shape[0]
+##    height = im.shape[1]
+##    if width < height:
+##        im = cv2.transpose(im)
+##        im = cv2.flip(im,1)
+    
+    cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
+    print(cards)
 
     # Debug: uncomment to see registered images
     for i,c in enumerate(card_img.getCards(im,num_cards)):
         card = card_img.find_closest_card(training,c,)
         cv2.imshow(str(card),c)
-    cv2.waitKey(0) 
+    cv2.waitKey(0)
+
     
-    cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
-    print(cards)
 
 ##    detect_web(content)
 
