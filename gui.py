@@ -128,12 +128,17 @@ if __name__ == "__main__":
         
         #getCard
         card_input = card_img.get_final_value(stream_url)
-        card_input = int (card_input)
+        #card_input = int (card_input)
         
         #Algorithms - get running count and advantage percentage
         card = Card.Card(card_input)
         r_count = Algorithm.get_r_count(card, r_count)
+
+        print(r_count)
+        
         adv_percentage = Algorithm.get_adv_percentage(r_count)
+
+        print(adv_percentage)
         
         #Update GUI based on refresh button
         ui.count_update(Dialog, r_count, counter)

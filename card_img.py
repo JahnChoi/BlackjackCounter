@@ -126,12 +126,11 @@ def get_final_value(stream_url):
   training_labels_filename = 'train.tsv'
   num_training_cards = 56
 
-  training = card_img.get_training(training_labels_filename,training_image_filename,
-                                   num_training_cards)
+  training = get_training(training_labels_filename,training_image_filename,num_training_cards)
 
   im = cv2.imread(filename)
 
-  cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
+  cards = [find_closest_card(training,c) for c in getCards(im,num_cards)]
   return cards[0][0]
 
 
