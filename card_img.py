@@ -122,7 +122,7 @@ def get_final_value(stream_url):
   print("Number of cards to analyze: ", end='')
   num_cards = int(input())
   filename = 'camera.jpg'
-  training_image_filename = 'training_deck.png'
+  training_image_filename = 'train.png'
   training_labels_filename = 'train.tsv'
   num_training_cards = 56
 
