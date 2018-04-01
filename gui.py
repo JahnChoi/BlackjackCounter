@@ -32,7 +32,7 @@ class Ui_Dialog(object):
         self.pushButton.setGeometry(QtCore.QRect(1020, 600, 210, 80))
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.listWidget = QtGui.QListWidget(Dialog)
-        self.listWidget.setGeometry(QtCore.QRect(1026, 50, 201, 491))
+        self.listWidget.setGeometry(QtCore.QRect(1026, 120, 201, 421))
         self.listWidget.setObjectName(_fromUtf8("listWidget"))
         self.verticalLayoutWidget = QtGui.QWidget(Dialog)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(110, 50, 911, 491))
@@ -59,16 +59,10 @@ class Ui_Dialog(object):
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName(_fromUtf8("label_2"))
         self.verticalLayout.addWidget(self.label_2)
-        self.pushButton.raise_()
-        self.label.raise_()
-        self.listWidget.raise_()
-        self.verticalLayoutWidget.raise_()
-        self.label.raise_()
-        self.label.raise_()
-        self.verticalLayoutWidget.raise_()
-        self.label.raise_()
-        self.label_2.raise_()
-        self.label.raise_()
+        self.label_3 = QtGui.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(1030, 50, 191, 71))
+        self.label_3.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_3.setObjectName(_fromUtf8("label_3"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -79,6 +73,7 @@ class Ui_Dialog(object):
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.label.setText(_translate("Dialog", "-3%", None))
         self.label_2.setText(_translate("Dialog", "Disadvantage: House always has edge in start", None))
+        self.label_3.setText(_translate("Dialog", "Count", None))
 
     #update the list view with new counter
     def count_update(self, Dialog, r_count, counter):
