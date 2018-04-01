@@ -66,6 +66,14 @@ class Ui_Dialog(object):
         self.label_3.setGeometry(QtCore.QRect(1030, 50, 191, 71))
         self.label_3.setAlignment(QtCore.Qt.AlignCenter)
         self.label_3.setObjectName(_fromUtf8("label_3"))
+        self.label_4 = QtGui.QLabel(Dialog)
+        self.label_4.setGeometry(QtCore.QRect(0, 680, 291, 34))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8("Calibri Light"))
+        font.setPointSize(8)
+        self.label_4.setFont(font)
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName(_fromUtf8("label_4"))
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -78,6 +86,7 @@ class Ui_Dialog(object):
         self.label.setStyleSheet('color: red')
         self.label_2.setText(_translate("Dialog", "Disadvantage: House always has edge in start", None))
         self.label_3.setText(_translate("Dialog", "Count", None))
+        self.label_4.setText(_translate("Dialog", "by John Choi, Alan Huynh", None))
 
     #update the list view with new counter
     def count_update(self, Dialog, r_count, counter):
@@ -104,7 +113,7 @@ class Ui_Dialog(object):
             self.label.setStyleSheet('color: green')
         elif (adv_percentage < 0):
             self.label_2.setText(_translate("Dialog", "Disadvantage: House's  Edge", None))
-            self.label.setStyleSheet('color: reds')
+            self.label.setStyleSheet('color: red')
         else:
             self.label_2.setText(_translate("Dialog", "Invalid Percentage", None))
         
@@ -128,6 +137,7 @@ if __name__ == "__main__":
         
         #getCard
         card_input = card_img.get_final_value(stream_url)
+        print (card_input)
         #card_input = int (card_input)
         
         #Algorithms - get running count and advantage percentage
