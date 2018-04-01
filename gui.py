@@ -5,10 +5,13 @@
 # Created by: PyQt4 UI code generator 4.11.4
 #
 # WARNING! All changes made in this file will be lost!
-
+"""
+GUI made in PyQt designer and .ui file was made into .py
+"""
 from PyQt4 import QtCore, QtGui
 import Card
 import Algorithm
+import card_img
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -90,6 +93,7 @@ class Ui_Dialog(object):
         adv_percentage = str(adv_percentage)
         self.label.setText(_translate("Dialog", adv_percentage + "%", None))
 
+    #update text
     def text_update(self, Dialog, adv_percentage):
         if (adv_percentage == 0):   
             self.label_2.setText(_translate("Dialog", "No Advantage: Even Game", None))
@@ -104,6 +108,7 @@ class Ui_Dialog(object):
 
 if __name__ == "__main__":
     import sys
+    stream_url = input("Enter stream url: ")
     app = QtGui.QApplication(sys.argv)
     Dialog = QtGui.QDialog()
     ui = Ui_Dialog()
@@ -118,14 +123,14 @@ if __name__ == "__main__":
         global r_count
         
         #getCard
-        card_input = '6'
+        card_input = card_img.get_final_value(stream_url)
         
-        #Algorithms
+        #Algorithms - get running count and advantage percentage
         card = Card.Card(card_input)
         r_count = Algorithm.get_r_count(card, r_count)
         adv_percentage = Algorithm.get_adv_percentage(r_count)
         
-        #Update GUI
+        #Update GUI based on refresh button
         ui.count_update(Dialog, r_count, counter)
         counter += 1
         ui.percentage_update(Dialog, adv_percentage)
