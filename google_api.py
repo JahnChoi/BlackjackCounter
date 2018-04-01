@@ -147,9 +147,6 @@ if __name__ == '__main__':
 
     cv2.imwrite('camera.jpg', img)
 
-##    with io.open('camera.png', 'rb') as image_file:
-##        content = image_file.read()
-
     print("Number of cards to analyze: ", end='')
     num_cards = int(input())
     filename = 'camera.jpg'
@@ -169,7 +166,7 @@ if __name__ == '__main__':
 ##        im = cv2.flip(im,1)
     
     cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
-    print(cards)
+    print(cards[0][0])
 
     # Debug: uncomment to see registered images
 ##    for i,c in enumerate(card_img.getCards(im,num_cards)):
@@ -180,6 +177,9 @@ if __name__ == '__main__':
 
 
 ## GOOGLE CLOUD PLATFORM VISION API PROTOTYPED
+
+##    with io.open('camera.png', 'rb') as image_file:
+##        content = image_file.read()
 
 ##    detect_web(content)
 

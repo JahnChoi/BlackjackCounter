@@ -110,7 +110,30 @@ def get_training(training_labels_filename,training_image_filename,num_training_c
   
   print ("Done training")
   return training
-  
+
+
+def get_final_value(stream_url):
+  imgResp=urllib.request.urlopen(url)
+  imgNp=np.array(bytearray(imgResp.read()),dtype=np.uint8)
+  img=cv2.imdecode(imgNp,-1)
+
+  cv2.imwrite('camera.jpg', img)
+
+  print("Number of cards to analyze: ", end='')
+  num_cards = int(input())
+  filename = 'camera.jpg'
+  training_image_filename = 'training_deck.png'
+  training_labels_filename = 'train.tsv'
+  num_training_cards = 56
+
+  training = card_img.get_training(training_labels_filename,training_image_filename,
+                                   num_training_cards)
+
+  im = cv2.imread(filename)
+
+  cards = [card_img.find_closest_card(training,c) for c in card_img.getCards(im,num_cards)]
+  return cards[0][0]
+
 
 ##if __name__ == '__main__':
 ##  if len(sys.argv) == 6:
