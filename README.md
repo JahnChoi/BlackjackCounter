@@ -6,3 +6,4 @@
 
   * OpenCV for Python
   * IP Webcam for Android
+  * PyQt4
