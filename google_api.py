@@ -172,10 +172,10 @@ if __name__ == '__main__':
     print(cards)
 
     # Debug: uncomment to see registered images
-    for i,c in enumerate(card_img.getCards(im,num_cards)):
-        card = card_img.find_closest_card(training,c,)
-        cv2.imshow(str(card),c)
-    cv2.waitKey(0)
+##    for i,c in enumerate(card_img.getCards(im,num_cards)):
+##        card = card_img.find_closest_card(training,c,)
+##        cv2.imshow(str(card),c)
+##    cv2.waitKey(0)
 
     
 
