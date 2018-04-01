@@ -20,6 +20,7 @@ import sys
 import numpy as np
 sys.path.insert(0, "/usr/local/lib/python2.7/site-packages/") 
 import cv2
+import urllib.request
 
 
 ###############################################################################
@@ -113,7 +114,7 @@ def get_training(training_labels_filename,training_image_filename,num_training_c
 
 
 def get_final_value(stream_url):
-  imgResp=urllib.request.urlopen(url)
+  imgResp=urllib.request.urlopen(stream_url)
   imgNp=np.array(bytearray(imgResp.read()),dtype=np.uint8)
   img=cv2.imdecode(imgNp,-1)
 
