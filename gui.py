@@ -82,15 +82,17 @@ class Ui_Dialog(object):
 
     #update the list view with new counter
     def count_update(self, Dialog, r_count, counter):
+        r_count = str(r_count)
         item = QtGui.QListWidgetItem()
         self.listWidget.addItem(item)
         item = self.listWidget.item(counter)
         item.setText(_translate("Dialog", r_count, None))
-        QtGui.QApplication.processEvents()
+        
         
 
     #update advantage percentage
     def percentage_update(self, Dialog, adv_percentage):
+        adv_percentage = str(adv_percentage)
         self.label.setText(_translate("Dialog", adv_percentage + "%", None))
 
     def text_update(self, Dialog, adv_percentage):
@@ -112,40 +114,30 @@ if __name__ == "__main__":
     ui = Ui_Dialog()
     #create ui start
     ui.setupUi(Dialog)
-###  
+
     counter = 0
     r_count = 0
-    loop = 1
-    QtGui.QApplication.processEvents()
-    #while (loop == 1):
-        card_input = input("Enter card drawn: ")
-        card = Card.Card(card_input)
-
-        r_count = Algorithm.get_r_count(card, r_count)
-        print("Running Count is: ", r_count)
-
-        adv_percentage = Algorithm.get_adv_percentage(r_count)
-        print("Advantage Percentage is: ", adv_percentage)
-
-        exit_input = input("Exit? (y/n): ")
-        if (exit_input == 'y'):
-            loop = 0
-        elif (exit_input == 'n'):
-            loop = 1
-        else:
-            print("Invalid input, continuing...")
-            loop = 1
-    
+    adv_percentage = -3
     def on_click():
-        adv_percentage_str = str(adv_percentage)
+        global counter
+        global r_count
+        
+        #getCard
+        card_input = '6'
+        
+        #Algorithms
+        card = Card.Card(card_input)
+        r_count = Algorithm.get_r_count(card, r_count)
+        adv_percentage = Algorithm.get_adv_percentage(r_count)
+        
+        #Update GUI
         ui.count_update(Dialog, r_count, counter)
         counter += 1
-        ui.percentage_update(Dialog, adv_percentage_str)
+        ui.percentage_update(Dialog, adv_percentage)
         ui.text_update(Dialog, adv_percentage)
         
     ui.pushButton.clicked.connect(on_click)
-    
-###    
+      
     Dialog.show()
     sys.exit(app.exec_())
 
