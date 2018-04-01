@@ -177,7 +177,9 @@ if __name__ == '__main__':
 ##        cv2.imshow(str(card),c)
 ##    cv2.waitKey(0)
 
-    
+
+
+## GOOGLE CLOUD PLATFORM VISION API PROTOTYPED
 
 ##    detect_web(content)
 
