@@ -128,7 +128,7 @@ if __name__ == "__main__":
         
         #getCard
         card_input = card_img.get_final_value(stream_url)
-        card_input = int (card_input)
+        #card_input = int (card_input)
         
         #Algorithms - get running count and advantage percentage
         card = Card.Card(card_input)
