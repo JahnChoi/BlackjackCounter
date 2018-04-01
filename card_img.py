@@ -119,8 +119,7 @@ def get_final_value(stream_url):
 
   cv2.imwrite('camera.jpg', img)
 
-  print("Number of cards to analyze: ", end='')
-  num_cards = int(input())
+  num_cards = 1
   filename = 'camera.jpg'
   training_image_filename = 'train.png'
   training_labels_filename = 'train.tsv'
